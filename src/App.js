@@ -23,7 +23,7 @@ import { PostView } from 'src/views/PostView';
 import { HomeView } from './views/HomeView';
 
 const router = createBrowserRouter(
-  createRoutesFromElements([
+  createRoutesFromElements(
     <Route element={<SessionProvider />} errorElement={<ErrorView />}>
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomeView />} />
@@ -60,7 +60,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="*" element={<NotFoundView />} />
     </Route>,
-  ]),
+  ),
 );
 
 export const App = () => {
