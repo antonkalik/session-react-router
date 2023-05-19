@@ -1,7 +1,7 @@
 import { Outlet, useOutletContext } from 'react-router';
-import styled from 'styled-components';
-import { Navigation } from './Navigation';
-import { Footer } from './Footer';
+import { Navigation } from 'src/components/Navigation';
+import { Footer } from 'src/components/Footer';
+import { StyledContainer, StyledMainLayout } from './styles';
 
 export const MainLayout = () => {
   const session = useOutletContext();
@@ -18,14 +18,3 @@ export const MainLayout = () => {
     </StyledMainLayout>
   );
 };
-
-const StyledContainer = styled.div`
-  background-color: ${({ session }) => (session ? '#f67575' : '#7ee78a')};
-  height: 300px;
-  padding: 20px;
-`;
-
-const StyledMainLayout = styled.div`
-  background-color: #bdbdbd;
-  padding: 10px;
-`;
