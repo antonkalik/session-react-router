@@ -1,7 +1,7 @@
-import { fakeApi } from '../data/fakeApi';
+import { useEffect } from 'react';
 import { useActionData, useNavigation, useOutletContext } from 'react-router';
 import { Form, redirect } from 'react-router-dom';
-import { useEffect } from 'react';
+import { fakeApi } from '../../data/fakeApi';
 
 export const LoginView = () => {
   const navigation = useNavigation();

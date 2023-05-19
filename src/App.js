@@ -1,72 +1,26 @@
-import {
-  createRoutesFromElements,
-  Outlet,
-  RouterProvider,
-  useOutletContext,
-  useParams,
-  useRouteError,
-} from 'react-router';
+import { createRoutesFromElements, RouterProvider } from 'react-router';
 import { createBrowserRouter, Route } from 'react-router-dom';
-import { MainLayout } from './components/MainLayout';
-import { ProtectedRoute } from './components/ProtectedRoute';
-import { PublicRoute } from './components/PublicRoute';
-import { LoginView, action as loginAction } from './views/LoginView';
-import { fakeCache } from './data/fakeCache';
-import { useEffect, useState } from 'react';
-import { fakeApi } from './data/fakeApi';
+import { MainLayout } from 'src/components/MainLayout';
+import { ProtectedRoute } from 'src/components/ProtectedRoute';
+import { PublicRoute } from 'src/components/PublicRoute';
+import { SessionProvider } from 'src/components/SessionProvider';
 
 // public routes
-const LandingView = () => <div>Landing View</div>;
-const SignUpView = () => <div>SignUp View</div>;
-const ForgotPasswordView = () => <div>Forgot Password View</div>;
-const AboutView = () => <div>About View</div>;
-const NotFoundView = () => <div>Not Found View</div>;
-const ErrorView = () => {
-  const error = useRouteError();
-
-  return (
-      <div>
-        Error View
-        <p>{error.message}</p>
-      </div>
-  );
-};
-
+import { AboutView } from 'src/views/AboutView';
+import { ForgotPasswordView } from 'src/views/ForgotPasswordView';
+import { NotFoundView } from 'src/views/NotFoundView';
+import { ErrorView } from 'src/views/ErrorView';
 
 // protected routes
-const PostsView = () => <div>Posts View</div>;
-const SettingsView = () => <div>Settings View</div>;
-const ListsPostsView = () => <div>List Posts View</div>;
-const UserView = () => {
-  const session = useOutletContext();
-  return <div>User {session.data?.email} View</div>;
-};
-const PostView = () => {
-  const params = useParams();
-  return <div>Post: {params.uuid} View</div>;
-};
+import { LoginView, action as loginAction } from 'src/views/LoginView';
+import { SignUpView } from 'src/views/SignUpView';
+import { UserView } from 'src/views/UserView';
+import { SettingsView } from 'src/views/SettingsView';
+import { PostsView } from 'src/views/PostsView';
+import { PostView } from 'src/views/PostView';
 
-// depends on protected routes
-const HomeView = () => {
-  const session = useOutletContext();
-  return session.data ? <ListsPostsView /> : <LandingView />;
-};
-
-const SessionProvider = () => {
-  const cache = fakeCache.getItem('cache');
-  const [data, setData] = useState(cache);
-
-  useEffect(() => {
-    fakeApi.getSession().then(setData);
-  }, []);
-
-  const logout = async () => {
-    setData(null);
-    await fakeApi.logout();
-  };
-
-  return <Outlet context={{ data, login: setData, logout }} />;
-};
+// common routes
+import { HomeView } from './views/HomeView';
 
 const router = createBrowserRouter(
   createRoutesFromElements([

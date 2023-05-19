@@ -1,0 +1,1 @@
+export const ListsPostsView = () => <div>List Posts View</div>;

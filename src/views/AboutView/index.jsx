@@ -1,0 +1,1 @@
+export const AboutView = () => <div>About View</div>;

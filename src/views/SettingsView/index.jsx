@@ -1,0 +1,1 @@
+export const SettingsView = () => <div>Settings View</div>;
