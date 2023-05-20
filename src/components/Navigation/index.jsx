@@ -10,7 +10,7 @@ export const Navigation = ({ session }) => {
     setLoading(true);
     await session.logout();
     setLoading(false);
-    navigate('/');
+    navigate('/login');
   };
 
   return (

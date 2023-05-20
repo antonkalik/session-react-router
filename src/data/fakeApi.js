@@ -2,7 +2,7 @@ import { db } from '../__mocks__/db.mock';
 import { fakeCache } from './fakeCache';
 
 class FakeApi {
-  static REQUEST_TIME = 1000;
+  static REQUEST_TIME = 2000;
   static KEY_CACHE = 'cache';
 
   session = null;

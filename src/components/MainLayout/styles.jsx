@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
   background-color: ${({ session }) => (session ? '#f67575' : '#7ee78a')};
-  height: 300px;
   padding: 20px;
 `;
 
