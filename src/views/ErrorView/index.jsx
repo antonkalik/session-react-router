@@ -5,7 +5,7 @@ export const ErrorView = () => {
 
   return (
     <div>
-      Error View
+      <h1>Error View</h1>
       <p>{error.message}</p>
     </div>
   );

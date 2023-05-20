@@ -4,5 +4,6 @@ import { ListsPostsView } from 'src/views/ListsPostsView';
 
 export const HomeView = () => {
   const session = useOutletContext();
+
   return session.data ? <ListsPostsView /> : <LandingView />;
 };

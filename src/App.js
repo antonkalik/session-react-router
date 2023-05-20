@@ -1,4 +1,4 @@
-import { createRoutesFromElements, RouterProvider } from 'react-router';
+import { createRoutesFromElements, RouterProvider, Routes } from 'react-router';
 import { createBrowserRouter, Route } from 'react-router-dom';
 import { MainLayout } from 'src/components/MainLayout';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
@@ -6,14 +6,11 @@ import { PublicRoute } from 'src/components/PublicRoute';
 import { SessionProvider } from 'src/components/SessionProvider';
 
 // public routes
-import { AboutView } from 'src/views/AboutView';
+import { SignUpView } from 'src/views/SignUpView';
+import { LoginView, action as loginAction } from 'src/views/LoginView';
 import { ForgotPasswordView } from 'src/views/ForgotPasswordView';
-import { NotFoundView } from 'src/views/NotFoundView';
-import { ErrorView } from 'src/views/ErrorView';
 
 // protected routes
-import { LoginView, action as loginAction } from 'src/views/LoginView';
-import { SignUpView } from 'src/views/SignUpView';
 import { UserView } from 'src/views/UserView';
 import { SettingsView } from 'src/views/SettingsView';
 import { PostsView } from 'src/views/PostsView';
@@ -21,6 +18,9 @@ import { PostView } from 'src/views/PostView';
 
 // common routes
 import { HomeView } from './views/HomeView';
+import { AboutView } from 'src/views/AboutView';
+import { NotFoundView } from 'src/views/NotFoundView';
+import { ErrorView } from 'src/views/ErrorView';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
