@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useActionData, useNavigation, useOutletContext } from 'react-router';
 import { Form, redirect } from 'react-router-dom';
-import { fakeApi } from '../../data/fakeApi';
 
 export const LoginView = () => {
   const navigation = useNavigation();
@@ -36,22 +35,3 @@ export const LoginView = () => {
     </div>
   );
 };
-
-export async function action({ request }) {
-  const formData = await request.formData();
-  const sessionData = {
-    username: formData.get('username'),
-    password: formData.get('password'),
-  };
-  try {
-    await fakeApi.login(sessionData);
-    return sessionData;
-  } catch (err) {
-    if (err.message === 'Invalid credentials') {
-      return {
-        error: 'Invalid username or password.',
-      };
-    }
-    throw err;
-  }
-}

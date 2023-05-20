@@ -1,13 +1,14 @@
-import { createRoutesFromElements, RouterProvider, Routes } from 'react-router';
+import { createRoutesFromElements, RouterProvider } from 'react-router';
 import { createBrowserRouter, Route } from 'react-router-dom';
 import { MainLayout } from 'src/components/MainLayout';
 import { ProtectedRoute } from 'src/components/ProtectedRoute';
 import { PublicRoute } from 'src/components/PublicRoute';
 import { SessionProvider } from 'src/components/SessionProvider';
+import { loginAction } from 'src/views/LoginView/loginAction';
 
 // public routes
 import { SignUpView } from 'src/views/SignUpView';
-import { LoginView, action as loginAction } from 'src/views/LoginView';
+import { LoginView } from 'src/views/LoginView';
 import { ForgotPasswordView } from 'src/views/ForgotPasswordView';
 
 // protected routes
@@ -43,11 +44,7 @@ const router = createBrowserRouter(
         />
         <Route
           path="/account"
-          element={
-            <ProtectedRoute
-              element={<ProtectedRoute element={<UserView />} />}
-            />
-          }
+          element={<ProtectedRoute element={<UserView />} />}
         />
         <Route
           path="/settings"
